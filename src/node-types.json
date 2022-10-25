@@ -58,14 +58,6 @@
         "required": false,
         "types": [
           {
-            "type": "(",
-            "named": false
-          },
-          {
-            "type": ")",
-            "named": false
-          },
-          {
             "type": "command",
             "named": true
           },
@@ -185,6 +177,11 @@
     }
   },
   {
+    "type": "percent_sign",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -225,11 +222,15 @@
         "required": true,
         "types": [
           {
-            "type": "%",
-            "named": false
+            "type": "number",
+            "named": true
           },
           {
-            "type": "number",
+            "type": "percent_sign",
+            "named": true
+          },
+          {
+            "type": "text",
             "named": true
           }
         ]
@@ -284,18 +285,6 @@
   },
   {
     "type": "\r",
-    "named": false
-  },
-  {
-    "type": "%",
-    "named": false
-  },
-  {
-    "type": "(",
-    "named": false
-  },
-  {
-    "type": ")",
     "named": false
   },
   {

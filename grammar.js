@@ -17,7 +17,7 @@ module.exports = grammar({
             $._expr,
             repeat($._expr),
         ),
-        
+
         _expr: $ => choice(
             seq($.command, $._newline),
             $.namespace,
@@ -52,9 +52,9 @@ module.exports = grammar({
             field('args', repeat(
                 choice(
                     seq(
-                        '(',
+                        $._left_parantheses,
                         $.command,
-                        ')',
+                        $._right_parantheses,
                     ),
                     $.variable,
                     $.text,
@@ -79,8 +79,8 @@ module.exports = grammar({
         )),
 
         variable: $ => prec(2, seq(
-            '%',
-            field('var', choice($._identifier_without_ver, $.number, '%')),
+            $._percent_sign,
+            field('var', choice($.text, $.number, $.percent_sign)),
         )),
 
         identifier_without_ver: $ => $._identifier_without_ver,
@@ -131,19 +131,23 @@ module.exports = grammar({
         wildcard: $ => token('*'),
 
         _newline: $ => choice(
-            '\n',
-            '\r',
-            '\n\r',
-            '\0',
+            token('\n'),
+            token('\r'),
+            token('\n\r'),
+            token('\0'),
         ),
         _left_square_bracket: $ => token('['),
         _right_square_bracket: $ => token(']'),
         _left_curly_brace: $ => token('{'),
         _right_curly_brace: $ => token('}'),
+        _left_parantheses: $ => token('('),
+        _right_parantheses: $ => token(')'),
         _comma: $ => token(','),
         _dot: $ => token('.'),
         _single_quotation_mark: $ => token('\''),
         _double_quotation_mark: $ => token('"'),
+        _percent_sign: $ => token('%'),
+        percent_sign: $ => $._percent_sign,
 
         comment: $ => token(choice(
             seq('//', /.*/),
