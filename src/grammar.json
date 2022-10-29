@@ -200,7 +200,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "text"
+                  "name": "primitive"
                 }
               ]
             }
@@ -288,12 +288,21 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "text"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_percent_sign"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "number"
+                    }
+                  ]
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "number"
+                  "name": "text"
                 },
                 {
                   "type": "SYMBOL",
@@ -336,6 +345,10 @@
           }
         ]
       }
+    },
+    "primitive": {
+      "type": "SYMBOL",
+      "name": "_primitive"
     },
     "_primitive": {
       "type": "CHOICE",

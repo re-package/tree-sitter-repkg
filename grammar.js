@@ -57,7 +57,7 @@ module.exports = grammar({
                         $._right_parantheses,
                     ),
                     $.variable,
-                    $.text,
+                    $.primitive,
                 )
             )),
         ),
@@ -80,7 +80,7 @@ module.exports = grammar({
 
         variable: $ => prec(2, seq(
             $._percent_sign,
-            field('var', choice($.text, $.number, $.percent_sign)),
+            field('var', choice(seq($._percent_sign, $.number), $.text, $.percent_sign)),
         )),
 
         identifier_without_ver: $ => $._identifier_without_ver,
@@ -92,6 +92,7 @@ module.exports = grammar({
             $._identifier_without_ver,
         )),
 
+        primitive: $ => $._primitive,
         _primitive: $ => choice(
             $.number,
             $.string,
