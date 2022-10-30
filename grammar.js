@@ -58,6 +58,7 @@ module.exports = grammar({
                     ),
                     $.variable,
                     $.primitive,
+                    $.text,
                 )
             )),
         ),
