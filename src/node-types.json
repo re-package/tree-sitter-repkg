@@ -66,6 +66,10 @@
             "named": true
           },
           {
+            "type": "text",
+            "named": true
+          },
+          {
             "type": "variable",
             "named": true
           }

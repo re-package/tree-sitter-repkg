@@ -1,0 +1,5 @@
+build {
+    todo %%1
+}
+
+build 'test'
