@@ -6,6 +6,10 @@ module.exports = grammar({
         /[\s\p{Zs}\uFEFF\u2060\u200B]/,
     ],
 
+    conflicts: $ => [
+        [$._path]
+    ],
+
     rules: {
         source_file: $ => $._body,
 
@@ -56,14 +60,14 @@ module.exports = grammar({
                         $.command,
                         $._right_parantheses,
                     ),
-                    $.variable,
+                    $._path,
                     $.primitive,
-                    $.text,
                 )
             )),
         ),
 
         _path: $ => prec(4, choice(
+            $.variable,
             $.identifier,
             $.nested_identifier,
         )),
@@ -138,26 +142,26 @@ module.exports = grammar({
             token('\n\r'),
             token('\0'),
         ),
-        _left_square_bracket: $ => token('['),
-        _right_square_bracket: $ => token(']'),
-        _left_curly_brace: $ => token('{'),
-        _right_curly_brace: $ => token('}'),
-        _left_parantheses: $ => token('('),
-        _right_parantheses: $ => token(')'),
-        _comma: $ => token(','),
-        _dot: $ => token('.'),
-        _single_quotation_mark: $ => token('\''),
-        _double_quotation_mark: $ => token('"'),
-        _percent_sign: $ => token('%'),
+        _left_square_bracket: $ => '[',
+        _right_square_bracket: $ => ']',
+        _left_curly_brace: $ => '{',
+        _right_curly_brace: $ => '}',
+        _left_parantheses: $ => '(',
+        _right_parantheses: $ => ')',
+        _comma: $ => ',',
+        _dot: $ => '.',
+        _single_quotation_mark: $ => '\'',
+        _double_quotation_mark: $ => '"',
+        _percent_sign: $ => '%',
         percent_sign: $ => $._percent_sign,
 
-        comment: $ => token(choice(
+        comment: $ => choice(
             seq('//', /.*/),
             seq(
                 '/*',
                 /[^*]*\*+([^/*][^*]*\*+)*/,
                 '/'
             )
-        )),
+        ),
     }
 });

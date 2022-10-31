@@ -62,11 +62,15 @@
             "named": true
           },
           {
-            "type": "primitive",
+            "type": "identifier",
             "named": true
           },
           {
-            "type": "text",
+            "type": "nested_identifier",
+            "named": true
+          },
+          {
+            "type": "primitive",
             "named": true
           },
           {
@@ -86,10 +90,19 @@
           {
             "type": "nested_identifier",
             "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
           }
         ]
       }
     }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "identifier",
@@ -115,6 +128,10 @@
         },
         {
           "type": "nested_identifier",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         },
         {
@@ -174,6 +191,10 @@
           },
           {
             "type": "nested_identifier",
+            "named": true
+          },
+          {
+            "type": "variable",
             "named": true
           }
         ]
@@ -315,16 +336,24 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": "//",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
   {
     "type": "@",
     "named": false
-  },
-  {
-    "type": "comment",
-    "named": true
   },
   {
     "type": "import",

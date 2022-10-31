@@ -196,15 +196,11 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "variable"
+                  "name": "_path"
                 },
                 {
                   "type": "SYMBOL",
                   "name": "primitive"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "text"
                 }
               ]
             }
@@ -218,6 +214,10 @@
       "content": {
         "type": "CHOICE",
         "members": [
+          {
+            "type": "SYMBOL",
+            "name": "variable"
+          },
           {
             "type": "SYMBOL",
             "name": "identifier"
@@ -507,123 +507,87 @@
       ]
     },
     "_left_square_bracket": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "["
-      }
+      "type": "STRING",
+      "value": "["
     },
     "_right_square_bracket": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "]"
-      }
+      "type": "STRING",
+      "value": "]"
     },
     "_left_curly_brace": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "{"
-      }
+      "type": "STRING",
+      "value": "{"
     },
     "_right_curly_brace": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "}"
-      }
+      "type": "STRING",
+      "value": "}"
     },
     "_left_parantheses": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "("
-      }
+      "type": "STRING",
+      "value": "("
     },
     "_right_parantheses": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": ")"
-      }
+      "type": "STRING",
+      "value": ")"
     },
     "_comma": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": ","
-      }
+      "type": "STRING",
+      "value": ","
     },
     "_dot": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "."
-      }
+      "type": "STRING",
+      "value": "."
     },
     "_single_quotation_mark": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "'"
-      }
+      "type": "STRING",
+      "value": "'"
     },
     "_double_quotation_mark": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "\""
-      }
+      "type": "STRING",
+      "value": "\""
     },
     "_percent_sign": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "%"
-      }
+      "type": "STRING",
+      "value": "%"
     },
     "percent_sign": {
       "type": "SYMBOL",
       "name": "_percent_sign"
     },
     "comment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "//"
-              },
-              {
-                "type": "PATTERN",
-                "value": ".*"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "/*"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
-              },
-              {
-                "type": "STRING",
-                "value": "/"
-              }
-            ]
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "//"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".*"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "/*"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
+            },
+            {
+              "type": "STRING",
+              "value": "/"
+            }
+          ]
+        }
+      ]
     }
   },
   "extras": [
@@ -636,7 +600,11 @@
       "value": "[\\s\\p{Zs}\\uFEFF\\u2060\\u200B]"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "_path"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
